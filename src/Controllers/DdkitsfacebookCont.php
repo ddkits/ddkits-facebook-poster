@@ -176,6 +176,45 @@ class DdkitsfacebookCont extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Build posts to facebook specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postToPageLive(Request $request)
+    {
+        $id = $request->uid;
+        $facebookPages = Ddkitsfacebook::where('uid', $id)->get();
+        $redirectURL = env('FACEBOOK_REDIRECT'); //Callback URL
+        $fbPermissions = array('publish_actions'); //Facebook permission
+
+        foreach ($facebookPages as $key) {
+            try {
+                $fb = new Facebook([
+                    'app_id' => $key->appId,
+                    'app_secret' => $key->appSecret,
+                    'default_graph_version' => 'v6.0',
+                ]);
+
+                $fb->setDefaultAccessToken($key->foreverPageAccessToken);
+                // try {
+                $fb->post($key->pageId.'/feed', [
+                    'message' => $request->message,
+                    'link' => $request->link,
+                ], $key->foreverPageAccessToken);
+            } catch (\FacebookAuthorizationException $th) {
+                Session::flash('Error', json_decode($th));
+
+                return redirect()->back();
+            }
+        }
+        Session::flash('Success', 'New Post to Facebook Page Posted');
+
+        return redirect()->back();
+    }
+
     public function publishToPageNew($feed, $id = false)
     {
         /*

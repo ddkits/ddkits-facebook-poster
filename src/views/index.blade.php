@@ -75,8 +75,24 @@
 	    					Test Post
 	    				</td>
 	    				<td>
-	    					{{ Form::open(array('route' => 'admin-ddkits-facebook.post')) }}
-		    				{{ Form::submit('Bulk Posts', ['class'=>'form-control btn-success']) }}
+                            {{ Form::open(array('route' => 'admin-ddkits-facebook.post')) }}
+                            This would send a test similar to this domain.
+		    				{{ Form::submit('Send a test', ['class'=>'form-control btn-success']) }}
+		    				{{ Form::close() }}
+	    				</td>
+
+                    </tr>
+                    <tr>
+	    				<td>
+	    					Post A message to all pages
+	    				</td>
+	    				<td>
+                            {{ Form::open(array('route' => 'admin-ddkits-facebook.postlive')) }}
+                            Custom Post to all Pages assigned to this account.
+                            {{ Form::textarea('message', '', ['class'=>'form-control', 'placeholder'=>'Message']) }}
+                            {{ Form::text('link', '', ['class'=>'form-control', 'placeholder'=>'Link']) }}
+                            {{ Form::number('uid', Auth::id(), ['class'=>'form-control hidden', 'hidden'=>'true']) }}
+		    				{{ Form::submit('Post', ['class'=>'form-control btn-success']) }}
 		    				{{ Form::close() }}
 	    				</td>
 
