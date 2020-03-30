@@ -14,9 +14,9 @@ class DdkitsfacebookServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadMigrationsFrom(__DIR__.'/migrations');
         $this->loadViewsFrom(__DIR__.'/views', 'ddkitsfacebook');
-        // $this->publishes([
-        //     __DIR__.'/views' => resource_path('views/ddkits/ddkitsfacebook'),
-        // ]);
+        $this->publishes([
+            __DIR__.'/views' => resource_path('views/vendor/ddkitsfacebook'),
+        ]);
     }
 
     /**

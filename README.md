@@ -16,3 +16,9 @@ By Sam Elayyoub
          ...
         Ddkits\Ddkitsfacebook\DdkitsfacebookServicesProvider::class,
     ],
+
+### 4: In case of changing the theme
+
+    - php artisan vendor:publish --tag="Ddkits\Ddkitsfacebook\DdkitsfacebookServiceProvider"
+
+Done!!!
