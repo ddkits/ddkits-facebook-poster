@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="canonical" href="{{ config('app.url', 'https://DDKits.com') }}">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>DDKits Facebook Poster</title>
 
     <!-- Styles -->

@@ -18,16 +18,19 @@ class DdkitsfacebookCont extends Controller
      */
     public function index()
     {
-        if (!Auth::user()) {
+        $id = Auth::id();
+        if (!$id) {
             Session::flash('Error', 'Must be logged in!!');
 
             return view('ddkitsfacebook::index')->with([
                 'settings' => [],
+                'userid' => $id,
             ]);
         } else {
-            $adminSettings = Ddkitsfacebook::where('uid', Auth::user()->id)->get();
+            $adminSettings = Ddkitsfacebook::where('uid', Auth::id())->get();
 
             return view('ddkitsfacebook::index')->with([
+                'userid' => $id,
                 'settings' => $adminSettings,
             ]);
         }

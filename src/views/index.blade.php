@@ -4,13 +4,13 @@
 
 @section('content')
         <!-- edit form column -->
-        @if (!Auth::id())
+        @if (Auth::id())
 	    <div class="bg-white col-lg-12 has-shadow text-center">
             <h1>DDKits Facebook Panel</h1>
-
+            {{ Form::open(array('route' => 'admin-ddkits-facebook.store', 'method'=>'POST')) }}
             <table class="table table-bordered col-lg-12">
 	    		<tbody>
-	    			{!! Form::open(array('route' => 'admin-ddkits-facebook.store')) !!}
+
 	    			<tr>
 	    				<td>
                             {{ Form::text('title','', ['class'=>'form-control', 'placeholder'=>'Title']) }}
@@ -29,17 +29,19 @@
                         </td>
 
 	    				<td>
+
+                        {{ Form::number('uid', Auth::id(), ['class'=>'form-control hidden', 'hidden'=>'true']) }}
 	    				{{ Form::submit('Create', ['class'=>'form-control btn-success']) }}
 	    				</td>
 
 	    			</tr>
 	    		</tbody>
-			    <dir hidden>
-			    	{{ Form::number('uid', Auth::id(), ['class'=>'form-control']) }}
-			    </dir>
-			    {!! Form::close() !!}
 
-	    	</table><hr>
+
+
+            </table>
+            {{ Form::close() }}
+            <hr>
 	    	 <table  class="table table-bordered col-lg-12">
                  <thead><tr>
                     <th class="info"> Title </th>
@@ -56,7 +58,7 @@
                  <td> {{ $settings->title }}</td>
                 <td> {{ $settings->appId }}</td>
                 <td> {{ $settings->pageId }}</td>
-                <td>{{ ($user->find($settings->uid)) ? $user->find($settings->uid)->firstname : '' }}</td>
+                <td>{{ (Auth::user()->find($settings->uid)) ? Auth::user()->find($settings->uid)->firstname : '' }}</td>
                 <td> {{ Form::submit('Delete', ['class'=>'btn btn-danger']) }}</td>
             </tr>
 
