@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Ddkits\Ddkitsfacebook\Models\Ddkitsfacebook;
 use Facebook\Facebook;
 use Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class DdkitsfacebookCont extends Controller
 {
@@ -173,7 +173,7 @@ class DdkitsfacebookCont extends Controller
         return redirect()->back();
     }
 
-    public function publishToPageNew($feed)
+    public function publishToPageNew($feed, $id = false)
     {
         /*
         * Configuration and setup Facebook SDK
@@ -184,6 +184,8 @@ class DdkitsfacebookCont extends Controller
 
         if (!Auth::user()) {
             $id = 1;
+        } elseif ($id) {
+            // $id = 1;
         } else {
             $id = Auth::user()->id;
         }
@@ -192,7 +194,7 @@ class DdkitsfacebookCont extends Controller
         //FB post content
         $message = (string) $feed->title;
         $title = (string) $feed->title;
-        $link = (string) env('APP_URL').'/news/'.$feed->path;
+        $link = (string) env('APP_URL').'/'.config('ddkitsfacebook.path').'/'.$feed->path;
         $description = (string) $feed->title;
         $picture = (string) env('APP_URL').'/'.$feed->image;
 

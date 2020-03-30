@@ -4,7 +4,7 @@
 
 @section('content')
         <!-- edit form column -->
-        @if (Auth::user())
+        @if (!Auth::id())
 	    <div class="bg-white col-lg-12 has-shadow text-center">
             <h1>DDKits Facebook Panel</h1>
 
@@ -35,7 +35,7 @@
 	    			</tr>
 	    		</tbody>
 			    <dir hidden>
-			    	{{ Form::number('uid', Auth::user()->id, ['class'=>'form-control']) }}
+			    	{{ Form::number('uid', Auth::id(), ['class'=>'form-control']) }}
 			    </dir>
 			    {!! Form::close() !!}
 
@@ -70,7 +70,7 @@
 	    		<tbody>
 	    			<tr>
 	    				<td>
-	    					Bulk Posts (bulk Posts)
+	    					Test Post
 	    				</td>
 	    				<td>
 	    					{{ Form::open(array('route' => 'admin-ddkits-facebook.post')) }}

@@ -12,7 +12,7 @@ class CreateDdkitsfacebooksTable extends Migration
     public function up()
     {
         Schema::create('ddkits_facebooks', function (Blueprint $table) {
-            $table->increment('id');
+            $table->increments('id');
             // references signed id from user
             $table->unsignedInteger('uid');
             $table->foreign('uid')->references('id')->on('users')->onDelete('cascade');
