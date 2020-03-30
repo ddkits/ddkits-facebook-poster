@@ -1,0 +1,28 @@
+{
+    "name": "ddkits/ddkitsfacebook",
+    "description": "Facebook Page Poster by Sam Elayyoub, using custom table and custom functions to post to pages or groups on facebook.",
+    "authors": [
+        {
+            "name": "Sam Elayyoub",
+            "email": "melayyoub@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.4",
+        "facebook/graph-sdk": "*",
+        "laravelcollective/html": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ddkits\\ddkitsfacebook\\DdkitsfacebookServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ddkits\\Ddkitsfacebook\\": "src/"
+        }
+    }
+}
