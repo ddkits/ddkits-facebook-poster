@@ -29,5 +29,8 @@ class DdkitsfacebookServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Ddkits\Ddkitsfacebook\Controllers\DdkitsfacebookCont');
+        $this->mergeConfigFrom(
+            __DIR__.'/config/ddkitsconfig.php', 'ddkitsfacebook'
+        );
     }
 }
