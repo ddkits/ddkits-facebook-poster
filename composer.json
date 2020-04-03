@@ -1,7 +1,7 @@
 {
   "name": "ddkits/ddkitsfacebook",
   "description": "Facebook Page Poster by Sam Elayyoub, using custom table and custom functions to post to pages or groups on facebook.",
-  "type": "project",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
