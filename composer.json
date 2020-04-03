@@ -15,9 +15,16 @@
     "facebook/graph-sdk": "*",
     "laravelcollective/html": "*"
   },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Ddkits\\Ddkitsfacebook\\DdkitsfacebookServiceProvider"
+      ]
+    }
+  },
   "autoload": {
     "psr-4": {
-      "Ddkits\\Ddkitsfacebook\\": "src/"
+      "Ddkits\\Ddkitsfacebook\\": "./src"
     }
   }
 }
