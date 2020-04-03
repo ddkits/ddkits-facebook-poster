@@ -16,7 +16,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ddkits\\ddkitsfacebook\\DdkitsfacebookServiceProvider"
+                "Ddkits\\Ddkitsfacebook\\DdkitsfacebookServiceProvider"
             ]
         }
     },
