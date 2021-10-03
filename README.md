@@ -14,7 +14,7 @@ By Sam Elayyoub
          * Application Service Providers...
          */
          ...
-        Ddkits\Ddkitsfacebook\DdkitsfacebookServicesProvider::class,
+        Ddkits\Ddkitsfacebook\DdkitsfacebookServiceProvider::class,
     ],
 
 ### 4: In case of changing the theme
@@ -39,7 +39,7 @@ By Sam Elayyoub
         - path (slug of your site if using ID please create the slug field and copy the id into it)
         - image (your post image)
 
-### Usage: ../admin-ddkist-facebook (must be a logged in user, using Auth::id())
+### Usage: ../admin-ddkits-facebook (must be a logged in user, using Auth::id())
 
     - ...
     use Ddkits\Ddkitsfacebook;
